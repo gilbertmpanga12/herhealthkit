@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication.component';
+import { RegistrationcenterComponent } from './registrationcenter/registrationcenter.component';
+import { PhysicianaccountComponent } from './physicianaccount/physicianaccount.component';
 
 
 @NgModule({
-  declarations: [AuthenticationComponent],
+  declarations: [AuthenticationComponent, RegistrationcenterComponent, PhysicianaccountComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule
