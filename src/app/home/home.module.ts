@@ -7,10 +7,11 @@ import { ResultsComponent } from './results/results.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { EmailnotverifiedComponent } from './emailnotverified/emailnotverified.component';
 import { TaketestComponent } from './taketest/taketest.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, TaketestComponent],
+  declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, TaketestComponent, WelcomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
