@@ -5,6 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class MainService {
   accountSelected: string = null;
+  isWelcome: boolean = true;
+  hasSymptoms: boolean = false;
+  urineColor: boolean = false;
+  urineSmell: boolean = false;
+
   constructor() { }
 
   selectAccountType(selectedType: string): void{
@@ -14,4 +19,6 @@ export class MainService {
   unselectAccountType(): void {
     this.accountSelected = null;
   }
+
+  
 }
