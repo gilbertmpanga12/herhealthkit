@@ -1,6 +1,6 @@
 .info-card{
     height: auto;
-    width: 67%;
+    width: 65%;
 }
 .img-row{
     height: 99px;
@@ -14,4 +14,68 @@
     width: 90%;
     position: relative;
     top: -4%;
+}
+
+// new hacks 
+.survey-entry{
+    width: 100%;
+    .survey-entry-box{
+    min-height: 745px;
+    max-width: 960px;
+    margin: 20px auto 60px;
+    border: 1px solid;
+   
+    }
+}
+.survey-entry .survey-entry-content {
+    -webkit-padding-after: 32px;
+    padding-block-end: 32px;
+    position: relative;
+}
+
+.survey-entry .survey-entry-content .flexible-row.navigation-row {
+    -webkit-padding-before: 20px;
+    padding-block-start: 20px;
+    -webkit-padding-start: 20px;
+    padding-inline-start: 20px;
+    -webkit-padding-end: 20px;
+    padding-inline-end: 20px;
+}
+
+.survey-entry .survey-entry-content .flexible-row.navigation-row {
+    background-color: #dedde1;
+}
+
+.flexible-space {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.survey-entry .survey-entry-content .flexible-row.img-row {
+    inline-size: 100%;
+    block-size: 100px;
+    position: relative;
+}
+
+.survey-entry .survey-entry-content .flexible-row.img-row, .survey-entry .survey-entry-content .flexible-row.navigation-row {
+    background-color: #dedde1;
+}
+
+.survey-entry .survey-entry-content .flexible-row {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.flexible-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.apple-cdc-icon{
+
 }
