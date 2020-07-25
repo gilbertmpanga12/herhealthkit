@@ -9,8 +9,7 @@ import { MainService } from '../main.service';
 })
 export class AuthenticationComponent implements OnInit {
   loginGroup: FormGroup;
-  isLoading: boolean = false;
-  constructor(private _fb: FormBuilder, private service: MainService) { }
+  constructor(private _fb: FormBuilder, public service: MainService) { }
 
   ngOnInit(): void {
     this.loginGroup = this._fb.group({
@@ -20,13 +19,13 @@ export class AuthenticationComponent implements OnInit {
   }
 
   login(): void{
-      this.isLoading = true;
+      this.service.isLoading = true;
       let email = this.loginGroup.get('email').value,password = 
       this.loginGroup.get('password').value
       this.service.login(email, password).then((res) => {
-          this.isLoading = false;
+        this.service.isLoading = false;
       }).catch(error => {
-          this.isLoading = false;
+        this.service.isLoading= false;
           alert(error);
       });
   }

@@ -14,6 +14,7 @@ export class MainService {
   urineColor: boolean = false;
   urineSmell: boolean = false;
   user:  User;
+  isLoading: boolean = false;
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,) { 
       this.auth.authState.subscribe(user => {
