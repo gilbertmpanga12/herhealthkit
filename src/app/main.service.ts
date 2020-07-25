@@ -36,21 +36,22 @@ export class MainService {
     this.router.navigate(['/']);
   }
 
-  async createAccount(email: string, password: string){
+  
+  async createUserAccount(email:string, password: string){
+    // creates user account
     let result = await this.auth.createUserWithEmailAndPassword(email,password);
     this.router.navigate(['/']);
   }
 
-  async createUserAccount(){
-    // do work here
-  }
-
   async createCenterAccount(){
-    // do work here
+    // creates registration center account
   }
 
   async createPhyscianAccount(){
-    // do work here
+    // creates physician account
   }
-  
+
+  async forgotPassword(email: string){
+    return await this.auth.sendPasswordResetEmail(email);
+  }  
 }
