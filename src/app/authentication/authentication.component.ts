@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-authentication',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
-
-  constructor() { }
+  loginGroup: FormGroup;
+  isLoading: boolean = false;
+  constructor(private _fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.loginGroup = this._fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    })
+  }
+
+  login(): void{
+      this.isLoading = true;
   }
 
 }
