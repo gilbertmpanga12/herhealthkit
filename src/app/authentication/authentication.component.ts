@@ -40,7 +40,7 @@ export class AuthenticationComponent implements OnInit {
         this.service.isLoading = false;
       }).catch(error => {
         this.service.isLoading= false;
-          alert(error);
+          this.service.snackbar(error);
       });
   }
 
