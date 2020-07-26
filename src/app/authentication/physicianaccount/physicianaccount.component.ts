@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/main.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-physicianaccount',
@@ -7,10 +8,17 @@ import { MainService } from 'src/app/main.service';
   styleUrls: ['./physicianaccount.component.scss']
 })
 export class PhysicianaccountComponent implements OnInit {
-
-  constructor(public service: MainService) { }
+  physicialFormGroup: FormGroup;
+  constructor(public service: MainService, private _fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.physicialFormGroup = this._fb.group({
+
+    });
+  }
+
+  createPhysicianAccount(): void {
+    this.service.isLoading = true;
   }
 
 }
