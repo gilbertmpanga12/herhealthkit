@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerUserAccountGroup = this._fb.group({
-      gender: ['', [Validators.required]],
+      gender: ['Female', [Validators.required]],
       firstName: ['',  [Validators.required]],
       lastName: ['',[Validators.required]],
       district: ['', [Validators.required]],
