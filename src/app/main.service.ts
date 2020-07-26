@@ -55,4 +55,8 @@ export class MainService {
   async forgotPassword(email: string){
     return await this.auth.sendPasswordResetEmail(email);
   }  
+  
+  snackbar(message: string): void{
+     alert(message);
+  }
 }

@@ -12,23 +12,34 @@
           </a>
         </p>
       </div>
+      
       <form class="mt-8" [formGroup]="loginGroup" (ngSubmit)="login()">
+        
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm">
           <div>
-            <input aria-label="Email address" name="email" formControlName="email"
-            type="email" required class="appearance-none 
-            rounded-none relative block w-full px-3 py-2
-            border border-gray-300 placeholder-gray-500 text-gray-900 
-            rounded-t-md focus:outline-none focus:shadow-outline-blue 
-            focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="Email address">
+            <input aria-label="Email address"  formControlName="email"
+            type="email" required 
+            [className]="loginGroup.get('email').touched && 
+            loginGroup.get('email').invalid ? errorClass : defaultFormClass"
+            placeholder="Email address">
           </div>
+          
           <div class="-mt-px">
-            <input aria-label="Password" name="password" 
+            <input aria-label="Password"  
             formControlName="password"
+            [className]="loginGroup.get('password').touched && 
+            loginGroup.get('password').invalid ? errorClass : defaultFormClass"
             type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" placeholder="Password">
           </div>
         </div>
+
+        <p 
+        *ngIf="loginGroup.get('password').touched && loginGroup.get('password').invalid"
+        class="text-red-500 text-xs italic mt-1">* Please provide email.</p>
+        <p class="text-red-500 text-xs italic mt-1"
+            *ngIf="loginGroup.get('email').touched && loginGroup.get('email').invalid"
+            >* Please enter a valid email address e.g samhawks@example.com</p>
   
         <div class="mt-6 flex items-center justify-between">
           <div class="flex items-center">

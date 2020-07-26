@@ -9,6 +9,20 @@ import { MainService } from '../main.service';
 })
 export class AuthenticationComponent implements OnInit {
   loginGroup: FormGroup;
+  defaultFormClass: string = `
+  appearance-none 
+  rounded-none relative block w-full px-3 py-2
+  border border-gray-300 placeholder-gray-500 text-gray-900 
+  rounded-t-md focus:outline-none focus:shadow-outline-blue 
+  focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5
+  `;
+  errorClass: string = `
+  appearance-none 
+  rounded-none relative block w-full px-3 py-2
+  border border-red-300 placeholder-red-500 text-red-900 
+  rounded-t-md focus:outline-none focus:shadow-outline-red 
+  focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5
+  `;
   constructor(private _fb: FormBuilder, public service: MainService) { }
 
   ngOnInit(): void {
