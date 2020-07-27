@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MainService } from '../main.service';
+import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
 
 @Component({
   selector: 'app-authentication',
@@ -8,6 +9,8 @@ import { MainService } from '../main.service';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   loginGroup: FormGroup;
   defaultFormClass: string = `
   appearance-none 
@@ -23,9 +26,12 @@ export class AuthenticationComponent implements OnInit {
   rounded-t-md focus:outline-none focus:shadow-outline-red 
   focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5
   `;
-  constructor(private _fb: FormBuilder, public service: MainService) { }
+  constructor(private _fb: FormBuilder, public service: MainService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
+    this.toastr.overlayContainer = this.toastContainer;
     this.loginGroup = this._fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -40,8 +46,13 @@ export class AuthenticationComponent implements OnInit {
         this.service.isLoading = false;
       }).catch(error => {
         this.service.isLoading= false;
-          this.service.snackbar(error);
+        this.toastr.error(error,'', {
+          timeOut: 3000,
+          progressBar: true
+        });
       });
+      
+      
   }
 
 }

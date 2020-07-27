@@ -15,6 +15,10 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     CommonModule,
     AuthenticationRoutingModule,
     ReactiveFormsModule
+    
+  ],
+  providers: [
+  
   ]
 })
 export class AuthenticationModule { }

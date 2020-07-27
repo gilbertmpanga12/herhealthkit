@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-physicianaccount',
@@ -9,7 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PhysicianaccountComponent implements OnInit {
   physicialFormGroup: FormGroup;
-  constructor(public service: MainService, private _fb: FormBuilder) { }
+  constructor(public service: MainService, private _fb: FormBuilder, 
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.physicialFormGroup = this._fb.group({

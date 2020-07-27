@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MainService} from '../../main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerUserAccountGroup: FormGroup;
   accountTypes: string[] = ['User account', 'Registration Center Account', 'Physician Account'];
-  constructor(public service: MainService, private _fb: FormBuilder) { }
+  constructor(public service: MainService, private _fb: FormBuilder,  
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.registerUserAccountGroup = this._fb.group({

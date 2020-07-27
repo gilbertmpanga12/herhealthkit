@@ -3,6 +3,20 @@
 @tailwind components;  
 @tailwind utilities;
 
+// regular style toast 
+@import '~ngx-toastr/toastr';
+ 
+// bootstrap style toast 
+// or import a bootstrap 4 alert styled design (SASS ONLY) 
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions 
+@import '~ngx-toastr/toastr-bs4-alert';
+ 
+// if you'd like to use it without importing all of bootstrap it requires 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+
 .spinner {
     margin: 0 auto 0;
     width: 70px;
@@ -43,4 +57,9 @@
       -webkit-transform: scale(1.0);
       transform: scale(1.0);
     }
+  }
+
+  //ng-toast
+  .message-alert{
+    width: 100% !important;
   }
