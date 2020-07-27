@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
+  
 })
 export class RegisterComponent implements OnInit {
   registerUserAccountGroup: FormGroup;
@@ -28,6 +29,18 @@ export class RegisterComponent implements OnInit {
 
   registerUserAccount(): void{
       this.service.isLoading  = true;
+      const email = this.registerUserAccountGroup.get('email').value,
+      password = this.registerUserAccountGroup.get('password').value,
+      payload = this.registerUserAccountGroup.getRawValue();
+      this.service.registerAccount(email, password).then(res => {
+          this.service.createUserAccount(payload);
+      }).catch(error => {
+        this.service.isLoading= false;
+        this.toastr.error(error,'', {
+          timeOut: 3000,
+          progressBar: true
+        });
+      });
 
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registrationcenter',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrationcenterComponent implements OnInit {
   registrationCenterGroup: FormGroup;
-  constructor(public service: MainService, private _fb: FormBuilder) { }
+  constructor(public service: MainService, private _fb: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.registrationCenterGroup = this._fb.group({
@@ -19,12 +20,25 @@ export class RegistrationcenterComponent implements OnInit {
       category: ['Hospital', Validators.required],
       district: ['', Validators.required],
       city: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
   createRegistrationCenterAccount(): void{
-    this.service.isLoading = true;
+    this.service.isLoading  = true;
+      const email = this.registrationCenterGroup.get('email').value,
+      password = this.registrationCenterGroup.get('password').value,
+      payload = this.registrationCenterGroup.getRawValue();
+      this.service.registerAccount(email, password).then(res => {
+          this.service.createCenterAccount(payload);
+      }).catch(error => {
+        this.service.isLoading= false;
+        this.toastr.error(error,'', {
+          timeOut: 3000,
+          progressBar: true
+        });
+      });
   }
 
 }

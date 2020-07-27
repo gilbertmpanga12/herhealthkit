@@ -28,7 +28,19 @@ export class PhysicianaccountComponent implements OnInit {
   }
 
   createPhysicianAccount(): void {
-    this.service.isLoading = true;
+    this.service.isLoading  = true;
+      const email = this.physicialFormGroup.get('email').value,
+      password = this.physicialFormGroup.get('password').value,
+      payload = this.physicialFormGroup.getRawValue();
+      this.service.registerAccount(email, password).then(res => {
+          this.service.createPhyscianAccount(payload);
+      }).catch(error => {
+        this.service.isLoading= false;
+        this.toastr.error(error,'', {
+          timeOut: 3000,
+          progressBar: true
+        });
+      });
   }
 
 }
