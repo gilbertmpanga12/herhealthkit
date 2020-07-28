@@ -5,10 +5,15 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [{ path: '', 
 loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-canActivateChild: [AuthGuard],
+canActivateChild: [AuthGuard]
+
 },
  { path: 'auth', 
- loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
+ loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
+ data: {
+  animation: 'FilterPage'
+}
+},
 {
   path: '**',
   component: PagenotfoundComponent,

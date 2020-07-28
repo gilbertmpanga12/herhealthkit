@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       const email = this.registerUserAccountGroup.get('email').value,
       password = this.registerUserAccountGroup.get('password').value,
       payload = this.registerUserAccountGroup.getRawValue();
-      this.service.registerAccount(email, password).then(res => {
+      this.service.registerAccount(email, password, 'USER').then(res => {
           this.service.createUserAccount(payload);
       }).catch(error => {
         this.service.isLoading= false;

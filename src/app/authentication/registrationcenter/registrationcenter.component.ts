@@ -30,7 +30,7 @@ export class RegistrationcenterComponent implements OnInit {
       const email = this.registrationCenterGroup.get('email').value,
       password = this.registrationCenterGroup.get('password').value,
       payload = this.registrationCenterGroup.getRawValue();
-      this.service.registerAccount(email, password).then(res => {
+      this.service.registerAccount(email, password, 'REGISTRATIONCENTER').then(res => {
           this.service.createCenterAccount(payload);
       }).catch(error => {
         this.service.isLoading= false;
