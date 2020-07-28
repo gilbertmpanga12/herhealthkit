@@ -8,12 +8,13 @@ import { PhysicianaccountComponent } from './physicianaccount/physicianaccount.c
 import { RegisterComponent } from './register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { LayoutComponent } from './layout/layout.component';
+import { UseraccountComponent } from './useraccount/useraccount.component';
 
 
 
 @NgModule({
   declarations: [AuthenticationComponent, RegistrationcenterComponent, 
-    PhysicianaccountComponent, RegisterComponent, ForgotpasswordComponent, LayoutComponent],
+    PhysicianaccountComponent, RegisterComponent, ForgotpasswordComponent, LayoutComponent, UseraccountComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

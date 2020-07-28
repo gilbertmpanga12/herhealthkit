@@ -3,24 +3,14 @@ import {MainService} from '../../main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-interface Pages{
-  name: string;
-  url: string;
-}
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-useraccount',
+  templateUrl: './useraccount.component.html',
+  styleUrls: ['./useraccount.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class UseraccountComponent implements OnInit {
   registerUserAccountGroup: FormGroup;
-  accountTypes: Pages[] = [{name: 'User account', url: '/auth/create-user-account'}, {
-    name: 'Physician Account',
-    url: '/auth/register-physician-account'
-  }, {
-    name: 'Registration Center Account', url: '/auth/create-registration-center-account'
-  }];
+  accountTypes: string[] = ['User account', 'Registration Center Account', 'Physician Account'];
   constructor(public service: MainService, private _fb: FormBuilder,  
     private toastr: ToastrService) { }
 
@@ -52,5 +42,4 @@ export class RegisterComponent implements OnInit {
       });
 
   }
-
 }
