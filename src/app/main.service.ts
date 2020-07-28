@@ -48,18 +48,21 @@ export class MainService {
 
   async createUserAccount(payload: any){
     // creates user account
-    await this.firestore.collection('userAccount').doc(this.user.uid).set(payload);
+    const user = await this.auth.currentUser;
+    await this.firestore.collection('userAccount').doc(user.uid).set(payload);
     
   }
 
   async createCenterAccount(payload: any){
     // creates registration center account
-    await this.firestore.collection('centerAccount').doc(this.user.uid).set(payload);
+    let user = await this.auth.currentUser;
+    await this.firestore.collection('centerAccount').doc(user.uid).set(payload);
   }
 
   async createPhyscianAccount(payload: any){
     // creates physician account
-    await this.firestore.collection('physicianAccount').doc(this.user.uid).set(payload);
+    let user = await this.auth.currentUser;
+    await this.firestore.collection('physicianAccount').doc(user.uid).set(payload);
   }
 
   async forgotPassword(email: string){
