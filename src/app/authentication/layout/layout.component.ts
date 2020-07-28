@@ -6,23 +6,23 @@ import { trigger, transition, style, query, animateChild, group, animate } from 
 const slideInAnimation = trigger('routeAnimations', [ 
   transition('AuthPage <=> RegisterPage', [
     style({ opacity: 0 }), 
-    animate(900, style({opacity: 1})),
+    animate(300, style({opacity: 1})),
   ]) ,
   transition('* <=> CreateUserPage', [
     style({ opacity: 0 }), 
-    animate(800, style({opacity: 1})),
+    animate(300, style({opacity: 1})),
   ]),
   transition('* <=> PhysicianAccountPage', [
     style({ opacity: 0 }), 
-    animate(800, style({opacity: 1})),
+    animate(300, style({opacity: 1})),
   ]), 
   transition('* <=> RegistrationCenterAccountPage', [
     style({ opacity: 0 }), 
-    animate(800, style({opacity: 1})),
+    animate(300, style({opacity: 1})),
   ]),
   transition('* <=> ForgotPasswordPage', [
     style({ opacity: 0 }), 
-    animate(800, style({opacity: 1})),
+    animate(300, style({opacity: 1})),
   ]),
   
 ]);
