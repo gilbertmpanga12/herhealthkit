@@ -22,7 +22,8 @@ export class UseraccountComponent implements OnInit {
       district: ['', [Validators.required]],
       city: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      telephone: ['', [Validators.required]]
+      telephone: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
