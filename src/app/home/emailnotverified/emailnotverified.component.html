@@ -21,16 +21,37 @@
         focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 
         transition duration-150 ease-in-out custom-width"
         *ngIf="!requestNewConfirmationLink"
-        (click)="sendConfirmationLink()"
+        (click)="openInput()"
         >
          
          Didn't receive link? Tap here
         </button>
-        <form class="w-full max-w-sm" *ngIf="requestNewConfirmationLink">
+        <form class="w-full max-w-sm" *ngIf="requestNewConfirmationLink" 
+        (ngSubmit)="sendConfirmationLink()"
+        [formGroup]="emailGroup">
           <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
-            <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Jane Doe" aria-label="Full name">
-            <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
-              Resend link
+            <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1
+             px-2 leading-tight focus:outline-none" type="email" 
+             formControlName="email"
+             name="email"
+             placeholder="Enter your email address" 
+             aria-label="Email">
+
+            <button 
+            [disabled]="emailGroup.invalid"
+            [className]="emailGroup.invalid ? 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 
+            border-teal-500 hover:border-teal-700 text-sm border-4 
+            text-white py-1 px-2 rounded' : 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 
+            border-teal-500 hover:border-teal-700 text-sm border-4 
+            text-white py-1 px-2 rounded'" type="submit">
+            <ng-container *ngIf="!service.isLoading">
+              Resend confirmation link
+            </ng-container>
+            <div class="spinner" *ngIf="service.isLoading">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
             </button>
             <button 
             (click)="cancel()"

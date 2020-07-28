@@ -15,6 +15,7 @@ export class MainService {
   hasSymptoms: boolean = false;
   urineColor: boolean = false;
   urineSmell: boolean = false;
+  userVerified: boolean = false;
   user:  User;
   isLoading: boolean = false;
   constructor(private auth: AngularFireAuth, 
@@ -22,6 +23,7 @@ export class MainService {
       this.auth.authState.subscribe(user => {
         if (user){
           this.user = user;
+          this.userVerified = user.emailVerified;
         }
       });
     }
@@ -72,6 +74,10 @@ export class MainService {
   async sendEmailVerification() {
     await (await this.auth.currentUser).sendEmailVerification();
     this.router.navigate(['/']);
+  }
+
+  async resendEmailActivation(){
+    await (await this.auth.currentUser).sendEmailVerification();
   }
 
   

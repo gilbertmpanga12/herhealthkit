@@ -8,13 +8,14 @@ import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { EmailnotverifiedComponent } from './emailnotverified/emailnotverified.component';
 import { TaketestComponent } from './taketest/taketest.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, TaketestComponent, WelcomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

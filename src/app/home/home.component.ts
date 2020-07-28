@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, public service: MainService) { }
 
   ngOnInit(): void {
-    console.log(this.service.user);
+
   }
 
   signOut(): void{
