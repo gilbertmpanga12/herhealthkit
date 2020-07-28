@@ -7,18 +7,18 @@ import { RegistrationcenterComponent } from './registrationcenter/registrationce
 import { PhysicianaccountComponent } from './physicianaccount/physicianaccount.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { LayoutComponent } from './layout/layout.component';
+
 
 
 @NgModule({
-  declarations: [AuthenticationComponent, RegistrationcenterComponent, PhysicianaccountComponent, RegisterComponent, ForgotpasswordComponent],
+  declarations: [AuthenticationComponent, RegistrationcenterComponent, 
+    PhysicianaccountComponent, RegisterComponent, ForgotpasswordComponent, LayoutComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
     ReactiveFormsModule
     
-  ],
-  providers: [
-  
   ]
 })
 export class AuthenticationModule { }

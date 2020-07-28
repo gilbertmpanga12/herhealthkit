@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MainService } from '../main.service';
 import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
 
+
+
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -56,3 +58,4 @@ export class AuthenticationComponent implements OnInit {
   }
 
 }
+

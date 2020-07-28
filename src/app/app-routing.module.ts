@@ -9,10 +9,8 @@ canActivateChild: [AuthGuard]
 
 },
  { path: 'auth', 
- loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
- data: {
-  animation: 'FilterPage'
-}
+ loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+
 },
 {
   path: '**',
