@@ -106,20 +106,36 @@ export class MainService {
 
   async submitScreening(){
     let user = await this.auth.currentUser;
+    this.isLoading = true;
     if(this.symptomStore.has('Back pain') && 
     this.symptomStore.has('Lower abdomen pain') && 
     this.symptomStore.has('Lower abdomen pain') && 
     this.symptomStore.has('Pelvic pain') && 
     this.symptomStore.has('Burning sensation during urination')){
+      this.isLoading = true;
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
-     await this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms);
-      this.router.navigate(['/visual-test-kit']);
-    }else{
+      this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms).then((res) => {
+        this.isLoading = false;
+        this.router.navigate(['/visual-test-kit']);
+     }).catch(err => {
+      this.tostr.error(err, 'Major Error', {
+        timeOut: 3000,
+      });
+     });
+      
+    }else {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
-       await this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms);
-       this.tostr.success('Hello world!', 'Toastr fun!');
+       this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms).then(res => {
+        this.isLoading = false;
+        this.tostr.success('Hello world!', 'Toastr fun!');
+       }).catch(err => {
+        this.tostr.error(err, 'Major Error', {
+          timeOut: 3000,
+        });
+       });
+       
     }
   }
 
