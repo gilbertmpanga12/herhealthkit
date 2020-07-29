@@ -9,9 +9,12 @@ import { EmailnotverifiedComponent } from './emailnotverified/emailnotverified.c
 import { TaketestComponent } from './taketest/taketest.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SymptomsComponent } from './symptoms/symptoms.component';
+import { UrinesmellComponent } from './urinesmell/urinesmell.component';
+import { UrinecolorComponent } from './urinecolor/urinecolor.component';
 
 @NgModule({
-  declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, TaketestComponent, WelcomeComponent],
+  declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, TaketestComponent, WelcomeComponent, SymptomsComponent, UrinesmellComponent, UrinecolorComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
