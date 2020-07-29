@@ -27,15 +27,11 @@
             <h1 class="section-label" tabindex="-1">Kit Visual Activity</h1>
         <p>Select one color per bar to complete visual test for your urine</p>
 
-        <div class="mt-8 mt-8">
-            <h1 class="font-medium subpixel-antialiased pb-2 text-gray-900">LEU 120S</h1>
+        <div class="mt-8 mt-8" *ngFor="let metric of metrics">
+            <h1 class="font-medium subpixel-antialiased pb-2 text-gray-900">{{metric['title']}}</h1>
             <div class="flex">
-                <div class="w-1/6 bg-gray-400 h-12 cursor-pointer"></div>
-                <div class="w-1/6 bg-gray-500 h-12"></div>
-                <div class="w-1/6 bg-gray-400 h-12"></div>
-                <div class="w-1/6 bg-gray-500 h-12"></div>
-                <div class="w-1/6 bg-gray-400 h-12"></div>
-                <div class="w-1/6 bg-gray-500 h-12"></div>
+                <div class="w-1/6 h-12 cursor-pointer" [ngStyle]="{'background-color': paramter['color']}"
+                *ngFor="let paramter of metric['parameters']">{{paramter['name']}}</div>
               </div>
         </div>
         
