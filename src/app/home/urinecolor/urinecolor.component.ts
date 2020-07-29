@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'app-urinecolor',
@@ -9,7 +10,7 @@ export class UrinecolorComponent implements OnInit {
   urineColor: string[] = [
     'Cloudy or milky', 'Dark yellow', 'Dark brown', 'Transparent or pink'
   ];
-  constructor() { }
+  constructor(public service: MainService) { }
 
   ngOnInit(): void {
   }

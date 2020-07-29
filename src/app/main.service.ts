@@ -15,6 +15,15 @@ export class MainService {
   userVerified: boolean = false;
   user:  User;
   isLoading: boolean = false;
+  symptomStore: Set<string> = new Set();
+  defaultBorderStyle: string = `
+  border border-gray-400 rounded-lg w-full p-6 text-left bg-white 
+  shadow-md mb-5 inline-flex items-stretch
+  `;
+  selectedBorderStyle: string = `
+  border-4 border-indigo-700 rounded-lg w-full p-6 text-left bg-white 
+  shadow-md mb-5 inline-flex items-stretch
+  `;
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore, private http: HttpClient) { 
       this.auth.authState.subscribe(user => {
@@ -85,5 +94,12 @@ export class MainService {
     this.router.navigate(['/auth']);
   }
 
+  pushItem(item: string): void{
+    this.symptomStore.add(item);
+  }
+
+  removeSymptom(item: string){
+    this.symptomStore.delete(item);
+  }
 
 }
