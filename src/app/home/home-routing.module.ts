@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { ResultsComponent } from './results/results.component';
-import { TaketestComponent } from './taketest/taketest.component';
+import { SymptomsComponent } from './symptoms/symptoms.component';
+import { UrinesmellComponent } from './urinesmell/urinesmell.component';
+import { UrinecolorComponent } from './urinecolor/urinecolor.component';
 
 
 const routes: Routes = [
@@ -12,11 +14,32 @@ const routes: Routes = [
 children: [
   {
     path: '',
-    component: TaketestComponent
+    component: SymptomsComponent,
+    data: {
+      animations: 'CheckSymptomPage'
+    }
   },
   {
     path: 'results',
-    component: ResultsComponent
+    component: ResultsComponent,
+    data: {
+      path: 'ResultsPage'
+    }
+  },
+  
+  {
+    path: 'urine-smell',
+    component: UrinesmellComponent,
+    data: {
+      path: 'UrineSmellPage'
+    }
+  },
+  {
+    path: 'urine-color',
+    component: UrinecolorComponent,
+    data: {
+      data: 'UrineColor'
+    }
   }
 ]}
 ];

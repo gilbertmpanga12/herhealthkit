@@ -12,9 +12,6 @@ export class MainService {
   accountSelected: string = null;
   baseUrl: string = 'https://us-central1-momets-4e5e3.cloudfunctions.net/registeraccount';
   isWelcome: boolean = true;
-  hasSymptoms: boolean = false;
-  urineColor: boolean = false;
-  urineSmell: boolean = false;
   userVerified: boolean = false;
   user:  User;
   isLoading: boolean = false;

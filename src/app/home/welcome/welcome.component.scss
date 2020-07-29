@@ -1,3 +1,8 @@
+
+.survey-entry{
+    width: 80%;
+}
+
 .info-card{
     height: auto;
     width: 65%;
@@ -27,6 +32,9 @@
 
 @media (min-width: 200px) and (max-width: 400px) {
     .list-width{
+        width: 100%;
+    }
+    .survey-entry{
         width: 100%;
     }
 }
