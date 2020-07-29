@@ -20,6 +20,10 @@ const slideInAnimation = trigger('routeAnimations', [
   transition('* <=> UrineColor', [
     style({ opacity: 0 }), 
     animate(300, style({opacity: 1})),
+  ]), // VisualKitPage,
+  transition('* <=> VisualKitPage', [
+    style({ opacity: 0 }), 
+    animate(300, style({opacity: 1})),
   ])
   
 ]);

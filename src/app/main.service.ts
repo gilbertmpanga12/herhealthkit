@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class MainService {
   shadow-md mb-5 inline-flex items-stretch
   `;
   constructor(private auth: AngularFireAuth, 
-    private router: Router, private firestore: AngularFirestore, private http: HttpClient) { 
+    private router: Router, private firestore: AngularFirestore,
+     private http: HttpClient, private tostr: ToastrService) { 
       this.auth.authState.subscribe(user => {
         if (user){
           this.user = user;
@@ -101,5 +103,26 @@ export class MainService {
   removeSymptom(item: string){
     this.symptomStore.delete(item);
   }
+
+  async submitScreening(){
+    let user = await this.auth.currentUser;
+    if(this.symptomStore.has('Back pain') && 
+    this.symptomStore.has('Lower abdomen pain') && 
+    this.symptomStore.has('Lower abdomen pain') && 
+    this.symptomStore.has('Pelvic pain') && 
+    this.symptomStore.has('Burning sensation during urination')){
+      let symptoms = [];
+      this.symptomStore.forEach(val => symptoms.push(val));
+     await this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms);
+      this.router.navigate(['/visual-test-kit']);
+    }else{
+      let symptoms = [];
+      this.symptomStore.forEach(val => symptoms.push(val));
+       await this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms);
+       this.tostr.success('Hello world!', 'Toastr fun!');
+    }
+  }
+
+ 
 
 }

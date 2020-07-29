@@ -7,6 +7,7 @@ import { SymptomsComponent } from './symptoms/symptoms.component';
 import { UrinesmellComponent } from './urinesmell/urinesmell.component';
 import { UrinecolorComponent } from './urinecolor/urinecolor.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,13 @@ children: [
     component: UrinecolorComponent,
     data: {
       animation: 'UrineColor'
+    }
+  },
+  {
+    path: 'visual-test-kit',
+    component: ColorPickerComponent,
+    data: {
+      animation: 'VisualKitPage'
     }
   }
 ]}
