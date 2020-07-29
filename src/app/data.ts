@@ -85,7 +85,7 @@ export const Metrics = [
       ]
   },
   {
-      title: "pH 60S",
+      title: "PH 60S",
       parameters: [
           {
               name: "5.0",
