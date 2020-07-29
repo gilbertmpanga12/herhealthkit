@@ -115,7 +115,7 @@ export class MainService {
       this.isLoading = true;
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
-      this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms).then((res) => {
+      this.firestore.collection('screenings').doc(user.uid).set({screening: symptoms}).then((res) => {
         this.isLoading = false;
         this.router.navigate(['/visual-test-kit']);
      }).catch(err => {
@@ -123,13 +123,14 @@ export class MainService {
         timeOut: 3000,
       });
      });
+    
       
     }else {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
-       this.firestore.collection('physicianAccount').doc(user.uid).set(symptoms).then(res => {
+       this.firestore.collection('screenings').doc(user.uid).set({screening: symptoms}).then(res => {
         this.isLoading = false;
-        this.tostr.success('Hello world!', 'Toastr fun!');
+        this.tostr.success('Great! Your screening was submitted', 'You will be notified for the results shortly');
        }).catch(err => {
         this.tostr.error(err, 'Major Error', {
           timeOut: 3000,

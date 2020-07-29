@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MainService } from '../main.service';
-import { trigger, transition, style, query, animateChild, group, animate } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 // animations
 const slideInAnimation = trigger('routeAnimations', [ 
@@ -36,7 +36,7 @@ const slideInAnimation = trigger('routeAnimations', [
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, public service: MainService) { }
+  constructor( public service: MainService) { }
 
   ngOnInit(): void {
 
