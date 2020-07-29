@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,12 +9,9 @@ import { MainService } from 'src/app/main.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private service: MainService) { }
+  constructor(private service: MainService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  startScreening(): void{
-    this.service.isWelcome = false;
-  }
 }

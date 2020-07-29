@@ -6,6 +6,7 @@ import { ResultsComponent } from './results/results.component';
 import { SymptomsComponent } from './symptoms/symptoms.component';
 import { UrinesmellComponent } from './urinesmell/urinesmell.component';
 import { UrinecolorComponent } from './urinecolor/urinecolor.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -14,16 +15,23 @@ const routes: Routes = [
 children: [
   {
     path: '',
+    component: WelcomeComponent,
+    data: {
+      animation: 'WelcomePage'
+    }
+  },
+  {
+    path: 'check-symptoms',
     component: SymptomsComponent,
     data: {
-      animations: 'CheckSymptomPage'
+      animation: 'CheckSymptomPage'
     }
   },
   {
     path: 'results',
     component: ResultsComponent,
     data: {
-      path: 'ResultsPage'
+      animation: 'ResultsPage'
     }
   },
   
@@ -31,14 +39,14 @@ children: [
     path: 'urine-smell',
     component: UrinesmellComponent,
     data: {
-      path: 'UrineSmellPage'
+      animation: 'UrineSmellPage'
     }
   },
   {
     path: 'urine-color',
     component: UrinecolorComponent,
     data: {
-      data: 'UrineColor'
+      animation: 'UrineColor'
     }
   }
 ]}
