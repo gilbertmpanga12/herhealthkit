@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Metrics} from '../../data';
 import { MainService } from 'src/app/main.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 interface Metrics{
   title: string;
@@ -27,7 +28,7 @@ export class ColorPickerComponent implements OnInit {
   nit: Metrics = {title: "", parameters: []};
   uiToggle: Set<number> = new Set();
   throwError: boolean = false;
-  constructor(public service: MainService, private tostr: ToastrService) { }
+  constructor(public service: MainService, private tostr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -166,6 +167,7 @@ export class ColorPickerComponent implements OnInit {
     this.service.submitAllScreenings(payload).then(res => {
       this.service.isLoading = false;
       this.tostr.success('Great! Your screening was submitted', 'You will be notified for the results shortly');
+      this.router.navigate(['/']);
     }).catch(err => {
       this.service.isLoading = false;
       this.tostr.error(err, 'Major Error', {
