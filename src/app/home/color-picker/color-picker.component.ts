@@ -25,13 +25,25 @@ export class ColorPickerComponent implements OnInit {
   glu: Metrics = {title: "", parameters: []};
   uro: Metrics = {title: "", parameters: []};
   nit: Metrics = {title: "", parameters: []};
-  uiToggle: Set<string> = new Set();
+  uiToggle: Set<number> = new Set();
   constructor(public service: MainService, private tostr: ToastrService) { }
 
   ngOnInit(): void {
   }
 
-  pickColor(title: string, parameter){
+  addItem(title: string, parameter: string){
+    this.tostr.info('Checked urine color ', title + ' ' + parameter);
+  }
+
+  removeItem(title: string, parameter: string){
+    this.tostr.warning('Unchecked urine color', title + ' ' + parameter, {
+      timeOut: 3000,
+    });
+  }
+
+  pickColor(title: string, parameter, _id: number){
+    this.uiToggle.add(_id);
+    this.addItem(title, parameter);
     switch(title){
       case "LEU 120S":
           this.leu['title'] = "LEU 120S";
@@ -88,7 +100,9 @@ export class ColorPickerComponent implements OnInit {
     }
   }
 
-  removeColor(title: string, parameter){
+  removeColor(title: string, parameter, _id: number){
+    this.uiToggle.delete(_id);
+    this.removeItem(title, parameter);
     switch(title){
       case "LEU 120S":
           let index = this.leu['parameters'].indexOf(parameter);
