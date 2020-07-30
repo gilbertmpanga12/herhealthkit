@@ -8,6 +8,7 @@ import { UrinesmellComponent } from './urinesmell/urinesmell.component';
 import { UrinecolorComponent } from './urinecolor/urinecolor.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { MobilemenuComponent } from './mobilemenu/mobilemenu.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,13 @@ children: [
     component: ColorPickerComponent,
     data: {
       animation: 'VisualKitPage'
+    }
+  },
+  {
+    path: 'menu',
+    component: MobilemenuComponent,
+    data: {
+      animation: 'MobilePage'
     }
   }
 ]}

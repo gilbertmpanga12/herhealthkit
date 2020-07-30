@@ -9,15 +9,14 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MobilemenuComponent } from './mobilemenu/mobilemenu.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent,
-    MobilemenuComponent
+    PagenotfoundComponent
     ],
   imports: [
     BrowserModule,

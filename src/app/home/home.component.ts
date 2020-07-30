@@ -24,8 +24,12 @@ const slideInAnimation = trigger('routeAnimations', [
   transition('* <=> VisualKitPage', [
     style({ opacity: 0 }), 
     animate(300, style({opacity: 1})),
+  ]) ,//, 
+
+  transition('* <=> MobilePage', [
+    style({ opacity: 0 }), 
+    animate(300, style({opacity: 1})),
   ])
-  
 ]);
 
 @Component({
@@ -35,7 +39,6 @@ const slideInAnimation = trigger('routeAnimations', [
   animations: [slideInAnimation]
 })
 export class HomeComponent implements OnInit {
-
   constructor( public service: MainService) { }
 
   ngOnInit(): void {
