@@ -84,9 +84,55 @@ export class ColorPickerComponent implements OnInit {
           break;
       default:
           console.log("Something has gone wrong");
-          
     }
+  }
 
+  removeColor(title: string, parameter){
+    switch(title){
+      case "LEU 120S":
+          let index = this.leu['parameters'].indexOf(parameter);
+          this.leu['parameters'].splice(index,1);
+          break;
+      case "NIT 60S":
+          let indexnit = this.nit['parameters'].indexOf(parameter);
+          this.nit['parameters'].splice(indexnit,1);
+          break;
+      case "URO 60S":
+          let indexuro = this.leu['parameters'].indexOf(parameter);
+          this.uro['parameters'].splice(indexuro,1);
+          break;
+      case "PRO 60S":
+          let indexpro = this.pro['parameters'].indexOf(parameter);
+          this.pro['parameters'].splice(indexpro,1);
+          break;
+      case "PH 60S":
+          let indexph = this.ph['parameters'].indexOf(parameter);
+          this.ph['parameters'].splice(indexph,1);
+          break;
+      case "BLO 60S":
+          let indexblo = this.ph['parameters'].indexOf(parameter);
+          this.blo['parameters'].splice(indexblo,1);
+          break;
+      case "SG 45S":
+          let indexsg = this.sg['parameters'].indexOf(parameter);
+          this.sg['parameters'].splice(indexsg,1);
+          break;
+      case "KET 40S":
+          this.ket['title'] = "KET 40SS";
+          this.ket['parameters'].push(parameter);
+          this.ket['parameters'] = [...new Set(this.ket['parameters'])];
+          break;
+      case "BIL 30S":
+          let indexbil = this.bil['parameters'].indexOf(parameter);
+          this.bil['parameters'].splice(indexbil,1);
+          break;
+      case "GLU 30S":
+          let indexglu = this.glu['parameters'].indexOf(parameter);
+          this.glu['parameters'].splice(indexglu,1);
+          break;
+      default:
+          console.log("Something has gone wrong");
+    }
   }
 
 }
