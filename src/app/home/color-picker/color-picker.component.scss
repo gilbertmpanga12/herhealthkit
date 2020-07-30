@@ -22,3 +22,15 @@
     font-weight: 600;
     color: #1d1d1f;
 }
+
+@media (min-width: 200px) and (max-width: 400px) {
+    .survey-entry{
+        width: 100%;
+    }
+    #choices{
+        flex-wrap: wrap !important;
+        width: 100%;
+        overflow: scroll;
+        
+    }
+}

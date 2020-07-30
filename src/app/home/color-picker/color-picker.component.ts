@@ -26,6 +26,7 @@ export class ColorPickerComponent implements OnInit {
   uro: Metrics = {title: "", parameters: []};
   nit: Metrics = {title: "", parameters: []};
   uiToggle: Set<number> = new Set();
+  throwError: boolean = false;
   constructor(public service: MainService, private tostr: ToastrService) { }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class ColorPickerComponent implements OnInit {
   pickColor(title: string, parameter, _id: number){
     this.uiToggle.add(_id);
     this.addItem(title, parameter);
+    console.log(title,parameter,_id);
     switch(title){
       case "LEU 120S":
           this.leu['title'] = "LEU 120S";
@@ -152,8 +154,9 @@ export class ColorPickerComponent implements OnInit {
 
   submitColorTestResults(){
     this.service.isLoading = true;
-    let regularSymptoms = JSON.parse('screening');
-    let payload = {
+    try{
+      let regularSymptoms = JSON.parse('screening');
+      let payload = {
       screening: regularSymptoms,
       visualtest: [
         this.leu, this.ph, this.pro, this.sg, this.uro, this.glu,
@@ -169,6 +172,14 @@ export class ColorPickerComponent implements OnInit {
         timeOut: 3000,
       });
     });
+    }catch(err){
+      this.throwError = true;
+      this.service.isLoading = false;
+      this.tostr.error('An error occured', 
+      'This happens if you have not done full screening. Please tap cancel & start a valid screening test ', {
+        timeOut: 9000,
+      });
+    }
   }
 
 

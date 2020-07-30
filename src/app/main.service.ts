@@ -26,6 +26,7 @@ export class MainService {
   shadow-md mb-5 inline-flex items-stretch
   `;
   colorCodes: any = {};
+  
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,
      private http: HttpClient, private tostr: ToastrService) { 
