@@ -25,6 +25,7 @@ export class MainService {
   border-4 border-indigo-700 rounded-lg w-full p-6 text-left bg-white 
   shadow-md mb-5 inline-flex items-stretch
   `;
+  colorCodes: any = {};
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,
      private http: HttpClient, private tostr: ToastrService) { 
@@ -138,6 +139,13 @@ export class MainService {
        });
        
     }
+  }
+
+
+  addColorCode(name: string, value: string){
+    // let parameter = [];
+    // parameter.push(value);
+    // this.colorCodes[name] = parameter;
   }
 
  

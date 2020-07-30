@@ -1,4 +1,4 @@
-<!-- component -->
+<!-- component
 <div class="bg-white pb-4 px-4 rounded-md w-full">
     <div class="flex justify-between w-full pt-6 ">
       <p class="ml-3"> Your results</p>
@@ -86,4 +86,9 @@ tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius
 tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
 
 
-</style>
+</style> -->
+
+<ngx-table [configuration]="configuration"
+           [data]="data"
+           [columns]="columns">
+</ngx-table>

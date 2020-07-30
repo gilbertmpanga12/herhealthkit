@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SymptomsComponent } from './symptoms/symptoms.component';
 import { UrinesmellComponent } from './urinesmell/urinesmell.component';
 import { UrinecolorComponent } from './urinecolor/urinecolor.component';
+import { TableModule } from 'ngx-easy-table';
 
 @NgModule({
   declarations: [HomeComponent, ResultsComponent, ColorPickerComponent, EmailnotverifiedComponent, 
@@ -19,7 +20,8 @@ import { UrinecolorComponent } from './urinecolor/urinecolor.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ]
 })
 export class HomeModule { }
