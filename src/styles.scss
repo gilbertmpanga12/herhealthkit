@@ -16,6 +16,7 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~ngx-toastr/toastr-bs4-alert';
+@import "~ngx-easy-table/style.scss";
 
 .spinner {
     margin: 0 auto 0;
@@ -106,6 +107,3 @@
     padding: 1em;
 }
 
-:host ::ng-deep #table {
-  font-family: 'Poppins', sans-serif !important;
-}

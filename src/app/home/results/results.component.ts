@@ -11,31 +11,46 @@ export class ResultsComponent implements OnInit {
   public columns: Columns[];
 
   public data = [{
-    phone: '+1 (934) 551-2224',
-    age: 20,
-    address: { street: 'North street', number: 12 },
-    company: 'ZILLANET',
-    name: 'Valentine Webb',
-    isActive: false,
-  }, {
-    phone: '+1 (948) 460-3627',
-    age: 31,
-    address: { street: 'South street', number: 12 },
-    company: 'KNOWLYSIS',
-    name: 'Heidi Duncan',
-    isActive: true,
-  }];
+    lue: '0.2',
+    nit: '1++',
+    uro: '78.1',
+    pro: '11',
+    ph: '+-',
+    blo: '6_+',
+    sg: '+77.6',
+    ket: '2+-',
+    bil: '0.1+',
+    glu: '8.2'
+  },
+  {
+    lue: '0.2',
+    nit: '1++',
+    uro: '78.1',
+    pro: '11',
+    ph: '+-',
+    blo: '6_+',
+    sg: '+77.6',
+    ket: '2+-',
+    bil: '0.1+',
+    glu: '8.2'
+  }
+  ];
 
   ngOnInit(): void {
     this.configuration = { ...DefaultConfig };
-    this.configuration.searchEnabled = true;
-    // ... etc.
+    this.configuration.searchEnabled = false;
+    //LUE	NIT	URO	PRO	PH	BLO	SG	KET	BIL	GLU
     this.columns = [
-      { key: 'phone', title: 'Phone' },
-      { key: 'age', title: 'Age' },
-      { key: 'company', title: 'Company' },
-      { key: 'name', title: 'Name' },
-      { key: 'isActive', title: 'STATUS' },
+      { key: 'lue', title: 'LUE' },
+      { key: 'nit', title: 'NIT' },
+      { key: 'uro', title: 'URO' },
+      { key: 'pro', title: 'PRO' },
+      { key: 'ph', title: 'PH' },
+      { key: 'blo', title: 'BLO' },
+      { key: 'sg', title: 'SG' },
+      { key: 'ket', title: 'KET' },
+      { key: 'bil', title: 'BIL' },
+      { key: 'glu', title: 'GLU' }
     ];
   }
 }
