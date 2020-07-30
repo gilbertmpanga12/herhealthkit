@@ -116,6 +116,7 @@ export class MainService {
       this.isLoading = true;
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
+      localStorage.setItem('screening',JSON.stringify(symptoms));
       this.firestore.collection('screenings').doc(user.uid).set({screening: symptoms}).then((res) => {
         this.isLoading = false;
         this.router.navigate(['/visual-test-kit']);
@@ -142,11 +143,17 @@ export class MainService {
   }
 
 
-  addColorCode(name: string, value: string){
-    // let parameter = [];
-    // parameter.push(value);
-    // this.colorCodes[name] = parameter;
-  }
+async submitAllScreenings(payload){
+   let user = await this.auth.currentUser;
+  this.firestore.collection('screenings').doc(user.uid).set(payload).then((res) => {
+    this.isLoading = false;
+    this.router.navigate(['/visual-test-kit']);
+ }).catch(err => {
+  this.tostr.error(err, 'Major Error', {
+    timeOut: 3000,
+  });
+ });
+ }
 
  
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Metrics} from '../../data';
 import { MainService } from 'src/app/main.service';
+import { ToastrService } from 'ngx-toastr';
 
 interface Metrics{
   title: string;
@@ -25,7 +26,7 @@ export class ColorPickerComponent implements OnInit {
   uro: Metrics = {title: "", parameters: []};
   nit: Metrics = {title: "", parameters: []};
   uiToggle: Set<string> = new Set();
-  constructor(public service: MainService) { }
+  constructor(public service: MainService, private tostr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -134,5 +135,28 @@ export class ColorPickerComponent implements OnInit {
           console.log("Something has gone wrong");
     }
   }
+
+  submitColorTestResults(){
+    this.service.isLoading = true;
+    let regularSymptoms = JSON.parse('screening');
+    let payload = {
+      screening: regularSymptoms,
+      visualtest: [
+        this.leu, this.ph, this.pro, this.sg, this.uro, this.glu,
+        this.nit, this.blo, this.ket,this.blo
+      ]
+    }
+    this.service.submitAllScreenings(payload).then(res => {
+      this.service.isLoading = false;
+      this.tostr.success('Great! Your screening was submitted', 'You will be notified for the results shortly');
+    }).catch(err => {
+      this.service.isLoading = false;
+      this.tostr.error(err, 'Major Error', {
+        timeOut: 3000,
+      });
+    });
+  }
+
+
 
 }
