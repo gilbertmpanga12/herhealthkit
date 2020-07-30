@@ -9,7 +9,7 @@ export const Metrics = [
       title: "NIT 60S",
       parameters: [
           {name: "-", color: "#fbf6e0"},
-          {name: "-", color: "#fee0e5"},
+          {name: "( - )", color: "#fee0e5"},
           {name: "PINK ROSE", color: "#fafafa"},
           {name: "ROSAD", color: "#fafafa"},
           {name: "ROSAD ROSA", color: "#fafafa"},
