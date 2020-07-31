@@ -27,11 +27,14 @@ export class MainService {
   shadow-md mb-5 inline-flex items-stretch
   `;
   colorCodes: any = {};
+  notificationCount: number = 0;
+  localStorageCount: number;
   
 
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,
      private http: HttpClient, private tostr: ToastrService) { 
+      this.localStorageCount = parseInt(localStorage.getItem('notificationCount'));
       this.auth.authState.subscribe(user => {
         if (user){
           this.user = user;
@@ -120,7 +123,9 @@ export class MainService {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
       localStorage.setItem('screening',JSON.stringify(symptoms));
-      this.firestore.collection('screenings').doc(user.uid).set({screening: symptoms}).then((res) => {
+      this.firestore.collection('screenings').add({screening: symptoms}).then((res) => {
+        this.notificationCount += 1;
+        localStorage.setItem('notificationCount', `${this.notificationCount}`);
         this.isLoading = false;
         this.router.navigate(['/visual-test-kit']);
      }).catch(err => {
@@ -133,7 +138,8 @@ export class MainService {
     }else {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
-       this.firestore.collection('screenings').doc(user.uid).set({screening: symptoms}).then(res => {
+      localStorage.setItem('screening',JSON.stringify(symptoms));
+       this.firestore.collection('visualtest').add({screening: symptoms, uid: this.user.uid}).then(res => {
         this.isLoading = false;
         this.tostr.success('Great! Your screening was submitted', 'You will be notified for the results shortly');
        }).catch(err => {
@@ -150,7 +156,6 @@ async submitAllScreenings(payload){
    let user = await this.auth.currentUser;
   this.firestore.collection('screenings').doc(user.uid).set(payload).then((res) => {
     this.isLoading = false;
-    this.router.navigate(['/visual-test-kit']);
  }).catch(err => {
   this.tostr.error(err, 'Major Error', {
     timeOut: 3000,
@@ -158,9 +163,6 @@ async submitAllScreenings(payload){
  });
  }
 
- async getResults(){
-
- }
 
  
 

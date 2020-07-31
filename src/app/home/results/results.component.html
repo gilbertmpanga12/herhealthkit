@@ -38,12 +38,14 @@
 
       <tbody class="align-baseline">
         <ng-container *ngFor="let head of items">
-          <tr *ngFor="let parameter of items['parameters']">
-            <td class="p-2 border-t border-gray-300 font-mono text-xs text-purple-700 whitespace-no-wrap">{{parameter['name']}}</td>
-            <td class="p-2 border-t border-gray-300 font-mono text-xs text-blue-700 whitespace-pre">{{parameter['meaning']}}
+        
+          <tr *ngFor="let parameter of head['visualtest']">
+            <td class="p-2 border-t border-gray-300 font-mono text-xs text-purple-700 whitespace-no-wrap">
+              {{parameter['parameters']['name']}}</td>
+            <td class="p-2 border-t border-gray-300 font-mono text-xs text-blue-700 whitespace-pre">{{parameter['parameters']['meaning']}}
             </td>
             <td class="p-2 border-t border-gray-200
-            font-mono text-xs text-blue-700 whitespace-pre">{{parameter['results']}}</td>
+            font-mono text-xs text-blue-700 whitespace-pre">{{parameter['parameters']['results']}}</td>
           </tr>
          
         </ng-container>
