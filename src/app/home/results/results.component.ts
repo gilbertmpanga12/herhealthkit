@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
+import { Metrics } from 'src/app/data';
 
 @Component({
   selector: 'app-results',
@@ -7,6 +8,7 @@ import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
+  tables = Metrics;
   public configuration: Config;
   public columns: Columns[];
 
