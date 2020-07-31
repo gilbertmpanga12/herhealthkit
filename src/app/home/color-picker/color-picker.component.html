@@ -45,9 +45,9 @@
                 *ngFor="let paramter of metric['parameters']" 
                 (click)="uiToggle.has(paramter['_id']) ? 
                 removeColor(metric['title'],
-                paramter['name'],
+                metric['title'] + ' ' + paramter['name'],
                 paramter['_id']) : pickColor(metric['title'],
-                paramter['name'],
+                metric['title'] + ' ' + paramter['name'],
                 paramter['_id'])"
                 >{{paramter['name']}}
 

@@ -46,7 +46,6 @@ export class ColorPickerComponent implements OnInit {
   pickColor(title: string, parameter, _id: number){
     this.uiToggle.add(_id);
     this.addItem(title, parameter);
-    console.log(title,parameter,_id);
     switch(title){
       case "LEU 120S":
           this.leu['title'] = "LEU 120S";
