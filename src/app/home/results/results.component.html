@@ -26,8 +26,8 @@
 
   <div class="container mx-auto mt-6">
 
-   
-    <table class="w-full text-left table-collapse" id="table">
+   <ng-container *ngIf="screening$ | async; let items; else loading">
+    <table class="w-full text-left table-collapse" id="table" >
       <thead>
         <tr>
           <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Parameters</th>
@@ -35,26 +35,51 @@
           <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Recommendation</th>
         </tr>
       </thead>
+
       <tbody class="align-baseline">
-        <ng-container *ngFor="let head of tables">
-          <tr *ngFor="let parameter of head['parameters']">
+        <ng-container *ngFor="let head of items">
+          <tr *ngFor="let parameter of items['parameters']">
             <td class="p-2 border-t border-gray-300 font-mono text-xs text-purple-700 whitespace-no-wrap">{{parameter['name']}}</td>
             <td class="p-2 border-t border-gray-300 font-mono text-xs text-blue-700 whitespace-pre">{{parameter['meaning']}}
             </td>
             <td class="p-2 border-t border-gray-200
             font-mono text-xs text-blue-700 whitespace-pre">{{parameter['results']}}</td>
           </tr>
+         
         </ng-container>
-     
-        
         
       </tbody>
+      
     </table>
+    <div *ngIf="items.length === 0" class="w-full">
+      <h1 class="font-medium text-center mt-10 text-base text-2xl text-gray-800">You have not done any screening yet</h1>
+    </div>
+   </ng-container>
+
+   <ng-template #loading>
+    <div 
+  
+    style="
+    vertical-align: middle;
+    text-align: center;
+    color: #129DD8;
+    border-style: none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);">
+    <img height="100" width="100" src="./assets/Spinner-1s-200px.gif" alt="Industrious" />
+  </div>
+   </ng-template>
+
+    
 
 
   </div>
 
-  <div id="pagination" class="w-full flex justify-center border-t border-gray-100 pt-4 items-center">
+  <!-- <div id="pagination" class="w-full flex justify-center border-t border-gray-100 pt-4 items-center">
 
     <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g opacity="0.4">
@@ -74,16 +99,6 @@
         fill="#18A0FB" />
     </svg>
 
-  </div>
+  </div> -->
 </div>
 
-<!-- <style>
-
-thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
-thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
-
-tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
-tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
-
-
-</style> -->

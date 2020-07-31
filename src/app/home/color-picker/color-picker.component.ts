@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 interface Metrics{
   title: string;
   parameters: string[];
+  uid: string;
 }
 
 @Component({
@@ -16,16 +17,16 @@ interface Metrics{
 })
 export class ColorPickerComponent implements OnInit {
   metrics: any = Metrics;
-  leu: Metrics = {title: "", parameters: []};
-  pro: Metrics = {title: "", parameters: []};
-  sg: Metrics = {title: "", parameters: []};
-  ket: Metrics= {title: "", parameters: []};
-  blo: Metrics = {title: "", parameters: []};
-  ph: Metrics = {title: "", parameters: []};
-  bil: Metrics = {title: "", parameters: []};
-  glu: Metrics = {title: "", parameters: []};
-  uro: Metrics = {title: "", parameters: []};
-  nit: Metrics = {title: "", parameters: []};
+  leu: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  pro: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  sg: Metrics = {title: "", parameters: [], uid: this.service.user.uid};
+  ket: Metrics= {title: "", parameters: [], uid: this.service.user.uid};
+  blo: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  ph: Metrics = {title: "", parameters: [], uid: this.service.user.uid};
+  bil: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  glu: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  uro: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
+  nit: Metrics = {title: "", parameters: [],uid: this.service.user.uid};
   uiToggle: Set<number> = new Set();
   throwError: boolean = false;
   constructor(public service: MainService, private tostr: ToastrService, private router: Router) { }

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { User } from 'firebase';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class MainService {
   `;
   colorCodes: any = {};
   
+
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,
      private http: HttpClient, private tostr: ToastrService) { 
@@ -154,6 +156,10 @@ async submitAllScreenings(payload){
     timeOut: 3000,
   });
  });
+ }
+
+ async getResults(){
+
  }
 
  

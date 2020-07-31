@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Metrics } from 'src/app/data';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
+// import { Screening } from '../../data';
+import { Observable } from 'rxjs';
+import { MainService } from 'src/app/main.service';
 
-declare const document: any;
 
 @Component({
   selector: 'app-results',
@@ -10,9 +13,16 @@ declare const document: any;
 })
 export class ResultsComponent implements OnInit {
   tables = Metrics;
-  
+  screenings: AngularFirestoreCollection;
+  screening$: Observable<any>;
+
+  constructor(private firestore: AngularFirestore, private service: MainService){
+    this.screenings = this.firestore.collection('screenings', ref => ref.where('uid', '==', this.service.user.uid));
+    this.screening$ = this.screenings.valueChanges();
+  }
+
   ngOnInit(): void {
-   
+
   }
 
   printDocument(): void{
