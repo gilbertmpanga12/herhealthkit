@@ -8,7 +8,7 @@
   </div>
   <div class="w-full flex justify-end px-2 mt-2">
     <div class="w-full sm:w-64 inline-block relative ">
-      <button type="button"
+      <button type="button" (click)="printDocument()"
         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
           <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
@@ -26,32 +26,8 @@
 
   <div class="container mx-auto mt-6">
 
-    <!-- <div class="border border-gray-500 rounded-md table-width">
-        <div 
-          class="flex items-stretch"  style="border: 1px solid red;"
-          > <div class="flex-1 text-gray-700 text-center  px-4 py-2 m-2">
-            <h1 class="font-medium text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mt-5">Parameter</h1></div>
-            <div class="flex-1 text-gray-700 text-center  px-4 py-2 m-2">
-              <h1 class="font-medium text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mt-5">Meaning</h1></div>
-            <div class="flex-1 text-gray-700 text-center  px-4 py-2 m-2">
-              <h1 class="font-medium text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl mt-5">Recommendation</h1></div>
-          </div>
-
-          <ng-container *ngFor="let head of tables">
-            <div 
-            *ngFor="let parameter of head['parameters']"
-            class="flex items-stretch  h-20"
-            > <div 
-            class="border-t-2 border-gray-300
-            font-medium 
-            flex-1 text-gray-700 text-center  p-2 text-center"><h1>{{parameter['name']}}</h1></div>
-              <div class="text-justify border-t-2 border-gray-300 font-medium flex-1 text-gray-700 text-center   p-2"><h1>{{parameter['meaning']}}</h1></div>
-              <div class="text-justify border-t-2 border-gray-300 font-medium flex-1 text-gray-700 text-center p-2 mr-2"><h1>{{parameter['results']}}</h1></div>
-            </div>
-           
-          </ng-container>
-      </div> -->
-    <table class="w-full text-left table-collapse">
+   
+    <table class="w-full text-left table-collapse" id="table">
       <thead>
         <tr>
           <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Parameters</th>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { Metrics } from 'src/app/data';
 
+declare const document: any;
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -54,5 +56,9 @@ export class ResultsComponent implements OnInit {
       { key: 'bil', title: 'BIL' },
       { key: 'glu', title: 'GLU' }
     ];
+  }
+
+  printDocument(): void{
+    window.print();
   }
 }
