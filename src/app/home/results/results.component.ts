@@ -17,7 +17,7 @@ export class ResultsComponent implements OnInit {
   screening$: Observable<any>;
 
   constructor(private firestore: AngularFirestore, private service: MainService){
-    this.screenings = this.firestore.collection('screenings', ref => ref.where('uid', '==', this.service.user.uid));
+    this.screenings = this.firestore.collection('screenings', ref => ref.where('uid', '==', this.service.user.uid).limit(20));
     this.screening$ = this.screenings.valueChanges();
   }
 
