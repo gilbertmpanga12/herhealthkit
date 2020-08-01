@@ -41,11 +41,11 @@
         
           <tr *ngFor="let parameter of head['visualtest']">
             <td class="p-2 border-t border-gray-300 font-mono text-xs text-purple-700 whitespace-no-wrap">
-              {{parameter['parameters']['name']}}</td>
-            <td class="p-2 border-t border-gray-300 font-mono text-xs text-blue-700 whitespace-pre">{{parameter['parameters']['meaning']}}
+              {{parameter['name']}}</td>
+            <td class="p-2 border-t border-gray-300 font-mono text-xs text-blue-700 whitespace-pre">{{parameter['meaning']}}
             </td>
             <td class="p-2 border-t border-gray-200
-            font-mono text-xs text-blue-700 whitespace-pre">{{parameter['parameters']['results']}}</td>
+            font-mono text-xs text-blue-700 whitespace-pre">{{parameter['results']}}</td>
           </tr>
          
         </ng-container>

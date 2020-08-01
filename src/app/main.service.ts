@@ -5,7 +5,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { firestore as ft } from 'firebase/app';
+import { Observable } from 'rxjs';
 
+interface Notification{
+  count: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +34,9 @@ export class MainService {
   colorCodes: any = {};
   notificationCount: number = 0;
   localStorageCount: number;
-  
+  userId: string;
+  notifications: AngularFirestoreDocument<Notification>;
+  notification$: Observable<Notification>;
 
   constructor(private auth: AngularFireAuth, 
     private router: Router, private firestore: AngularFirestore,
@@ -39,6 +46,8 @@ export class MainService {
         if (user){
           this.user = user;
           this.userVerified = user.emailVerified;
+          this.notifications= this.firestore.doc<Notification>('notifications/' + user.uid);
+          this.notification$= this.notifications.valueChanges();
         }
       });
     }
@@ -111,8 +120,18 @@ export class MainService {
     this.symptomStore.delete(item);
   }
 
-  async submitScreening(){
+  async setNotificationCount(){
+    const increment = ft.FieldValue.increment(1);
+   await this.firestore.doc('notifications/' + this.user.uid)
+   .set({count: increment}, {merge: true});
+  }
+
+  async removeNotificationCount() {
     let user = await this.auth.currentUser;
+    await this.firestore.collection('notifications').doc(user.uid).set({count: 0});
+  }
+
+  async submitScreening(){
     this.isLoading = true;
     if(this.symptomStore.has('Back pain') && 
     this.symptomStore.has('Lower abdomen pain') && 
@@ -123,23 +142,14 @@ export class MainService {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
       localStorage.setItem('screening',JSON.stringify(symptoms));
-      this.firestore.collection('screenings').add({screening: symptoms}).then((res) => {
-        this.notificationCount += 1;
-        localStorage.setItem('notificationCount', `${this.notificationCount}`);
-        this.isLoading = false;
-        this.router.navigate(['/visual-test-kit']);
-     }).catch(err => {
-      this.tostr.error(err, 'Major Error', {
-        timeOut: 3000,
-      });
-     });
-    
-      
+      localStorage.setItem('notificationCount', `${this.notificationCount}`);
+      this.isLoading = false;
+      this.router.navigate(['/visual-test-kit']);
     }else {
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));
       localStorage.setItem('screening',JSON.stringify(symptoms));
-       this.firestore.collection('visualtest').add({screening: symptoms, uid: this.user.uid}).then(res => {
+       this.firestore.collection('normalscreening').add({screening: symptoms, uid: this.user.uid}).then(res => {
         this.isLoading = false;
         this.tostr.success('Great! Your screening was submitted', 'You will be notified for the results shortly');
        }).catch(err => {

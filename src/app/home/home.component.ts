@@ -43,10 +43,14 @@ const slideInAnimation = trigger('routeAnimations', [
   animations: [slideInAnimation]
 })
 export class HomeComponent implements OnInit {
-  constructor( public service: MainService, private router: Router) { }
+  
+
+  constructor( public service: MainService, private router: Router) {
+
+   }
 
   ngOnInit(): void {
-
+  
   }
 
   signOut(): void{
@@ -58,8 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   resetCount(): void{
-    localStorage.removeItem('notificationCount');
-    this.service.notificationCount = 0;
+    this.service.removeNotificationCount();
     this.router.navigate(['/results']);
   }
 }
