@@ -29,7 +29,7 @@ export class MainService {
   `;
   selectedBorderStyle: string = `
   border-4 border-indigo-700 rounded-lg w-full p-6 text-left bg-white 
-  shadow-md mb-5 inline-flex items-stretch
+  shadow-md mb-5 inline-flex items-stretch font-extrabold
   `;
   colorCodes: any = {};
   notificationCount: number = 0;

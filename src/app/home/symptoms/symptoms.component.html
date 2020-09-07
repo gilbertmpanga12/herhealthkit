@@ -6,7 +6,7 @@
           <button 
           routerLink="/" style="outline:none;"
           class="font-bold py-2 px-4 rounded inline-flex items-center back-btn">
-            <svg viewBox="0 0 49.853515625 86.6689453125" fill="#0071eb" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            <svg viewBox="0 0 49.853515625 86.6689453125" fill="#5c007a" version="1.1" xmlns="http://www.w3.org/2000/svg"
               class="chevron-inline-cap chevron-inline-start 
             glyph-box" style="margin-right: 5px; height: 17.2206px; width: 9.90561px;">
               <g transform="matrix(1 0 0 1 -12.451225585937436 78.564453125)">
@@ -19,13 +19,14 @@
               C 12.4512 -33.5449 13.1348 -32.0801 14.4531 -30.7617 Z"></path>
               </g>
             </svg>
-            <span> Back</span>
+           
+            <span style="color:#5c007a"> Back</span>
           </button>
         </span>
         <button 
         style="outline:none;" routerLink="/"
         class="font-bold py-2 px-4 rounded inline-flex items-center back-btn mr-5">
-          <span> Cancel</span>
+          <span style="color:#5c007a"> Cancel</span>
         </button>
       </div>
       <div class="survey-content">
@@ -38,7 +39,7 @@
           [className]="service.symptomStore.has(symptom) ? service.selectedBorderStyle : service.defaultBorderStyle"
             *ngFor="let symptom of symptoms" style="outline: none;">
             
-            <span style="width: 95% !important;"><span class="font-medium antialiased m-0 text-lg">{{symptom}}</span></span>
+            <span style="width: 95% !important;"><span class="font-bold antialiased m-0 text-lg">{{symptom}}</span></span>
             
             <svg 
             *ngIf="!service.symptomStore.has(symptom)"
@@ -55,7 +56,7 @@
             </svg>
 
             <svg *ngIf="service.symptomStore.has(symptom)"
-                fill="#4c51bf"
+                fill="#5c007a"
                 viewBox="0 0 233.30078125 159.98291015625"
                                                         version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                         class=" layout-box"

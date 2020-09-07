@@ -19,6 +19,23 @@ h1,h2,h3,h4,h5,h6,button,a{
   font-weight: 900 !important;
 }
 
+.bg-indigo-500{
+  background-color: #a434c9 !important;
+}
+.bg-indigo-700 {
+  background-color: #5c007a !important;
+}
+.bg-indigo-600, .bg-indigo-700{
+  background-color: #5c007a !important;
+}
+.text-indigo-500, .text-indigo-700, .text-indigo-500,.text-indigo-600{
+  color: #5c007a !important;
+}
+.border-indigo-700{
+  border-color:  #5c007a !important;
+}
+
+
 .spinner {
     margin: 0 auto 0;
     width: 70px;
