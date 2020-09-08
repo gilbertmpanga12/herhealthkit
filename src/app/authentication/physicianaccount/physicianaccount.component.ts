@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { nations } from 'src/app/data';
 
 @Component({
   selector: 'app-physicianaccount',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PhysicianaccountComponent implements OnInit {
   physicialFormGroup: FormGroup;
+  countries: string[] = nations;
   constructor(public service: MainService, private _fb: FormBuilder, 
     private toastr: ToastrService) { }
 
@@ -21,9 +23,10 @@ export class PhysicianaccountComponent implements OnInit {
       district: ['', Validators.required],
       telephone: ['', Validators.required],
       password: ['',[Validators.required, Validators.minLength(6)]],
-      destination: ['', Validators.required],
+      destination: ['Doctor', Validators.required],
       gender: ['Female', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      country: ['United States', [Validators.required]]
     });
   }
 
