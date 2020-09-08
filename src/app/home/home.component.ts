@@ -43,12 +43,22 @@ const slideInAnimation = trigger('routeAnimations', [
   animations: [slideInAnimation]
 })
 export class HomeComponent implements OnInit {
-  
+  defaultStyle: string = `
+  cursor-pointer ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white 
+  focus:outline-none focus:text-white  transition duration-150 ease-in-out
+  `;
+  focusedStyle: string = `
+  cursor-pointer ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-white hover:text-white  
+  focus:outline-none focus:text-white  transition duration-150 ease-in-out bg-pink-400
+              `;
 
   constructor( public service: MainService, private router: Router) {
 
    }
 
+    checkUrl(url: string){
+     return this.router.url == url;
+   }
   ngOnInit(): void {
   
   }

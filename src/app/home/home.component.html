@@ -33,11 +33,12 @@
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex">
-              <a routerLink="/" class="cursor-pointer px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-purple-200 transition duration-150 ease-in-out">Take a test</a>
-              <a (click)="resetCount()" class="cursor-pointer ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 
-              focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><span 
+              <a routerLink="/" [className]="checkUrl('/') ? focusedStyle : defaultStyle">Take a test</a>
+              
+              <a (click)="resetCount()" 
+              [className]="checkUrl('/results') ? focusedStyle : defaultStyle"><span 
               *ngIf="(service.notification$ | async)?.count > 0; let result"
-              class="badge mb-3 bg-indigo-600 rounded-full px-2 py-1 text-center object-right-top text-white text-sm mr-1">1</span>Results</a>
+              class="badge mb-3 bg-blue-300 rounded-full px-2 py-1 text-center object-right-top text-white text-sm mr-1">1</span>Results</a>
               <a 
               (click)="signOut()"
               class="cursor-pointer ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Log out</a>
@@ -81,4 +82,20 @@
 
 
 
-<app-emailnotverified *ngIf="!service.userVerified"></app-emailnotverified>
+<app-emailnotverified *ngIf="service.userVerified == false && service.user != null"></app-emailnotverified>
+
+<div 
+  *ngIf="service.user == null"
+  style="
+    vertical-align: middle;
+    text-align: center;
+    color: #129DD8;
+    border-style: none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);">
+    <img height="100" width="100" src="assets/Spinner-1s-200px.gif" alt="Industrious" />
+  </div>
