@@ -133,11 +133,8 @@ export class MainService {
 
   async submitScreening(){
     this.isLoading = true;
-    if(this.symptomStore.has('Back pain') && 
-    this.symptomStore.has('Lower abdomen pain') && 
-    this.symptomStore.has('Lower abdomen pain') && 
-    this.symptomStore.has('Pelvic pain') && 
-    this.symptomStore.has('Burning sensation during urination')){
+    console.log(this.symptomStore.size);
+    if(this.symptomStore.size >=5 || this.symptomStore.size <= 8){
       this.isLoading = true;
       let symptoms = [];
       this.symptomStore.forEach(val => symptoms.push(val));

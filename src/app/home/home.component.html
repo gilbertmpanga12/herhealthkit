@@ -1,5 +1,5 @@
 <ng-container *ngIf="service.userVerified">
-  <nav class="bg-gray-800">
+  <nav class="bg-indigo-700 text-white">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -29,11 +29,11 @@
              <h3 
              routerLink="/" style="outline: none;"
              class="mt-1 text-xl logo hidden font-medium 
-             lg:block h-8 w-auto cursor-pointer text-white mr-1">Herhealth kit</h3>
+             lg:block h-8 w-auto cursor-pointer text-white mr-1">HerHealth kit</h3>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex">
-              <a routerLink="/" class="cursor-pointer px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Take a test</a>
+              <a routerLink="/" class="cursor-pointer px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-purple-200 transition duration-150 ease-in-out">Take a test</a>
               <a (click)="resetCount()" class="cursor-pointer ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 
               focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><span 
               *ngIf="(service.notification$ | async)?.count > 0; let result"
