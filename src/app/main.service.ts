@@ -46,6 +46,7 @@ export class MainService {
         if (user){
           this.user = user;
           this.userVerified = user.emailVerified;
+         
           this.notifications= this.firestore.doc<Notification>('notifications/' + user.uid);
           this.notification$= this.notifications.valueChanges();
         }
