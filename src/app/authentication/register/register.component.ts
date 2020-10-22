@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     name: 'Physician Account',
     url: '/auth/register-physician-account'
   }, {
-    name: 'Registration Center Account', url: '/auth/create-registration-center-account'
+    name: 'Registration Account', url: '/auth/create-registration-center-account'
   }];
   constructor(public service: MainService, private _fb: FormBuilder,  
     private toastr: ToastrService) { }
